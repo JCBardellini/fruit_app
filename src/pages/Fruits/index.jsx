@@ -9,7 +9,7 @@ const Fruits = () => {
       method: "GET",
       url: "/server/fruits",
     }).then((res) => {
-      console.log("response data", res.data);
+      console.log("response data", res);
       setFruits(res.data);
     });
   }, []);

@@ -7,6 +7,7 @@ const CreateFruits = () => {
     name: "",
     color: "",
     readyToEat: false,
+    age: 0,
   });
   const [error, setError] = useState("");
   const handleSubmit = (e) => {
@@ -26,6 +27,7 @@ const CreateFruits = () => {
         name: "",
         color: "",
         readyToEat: false,
+        age: 0,
       });
       setError("");
     });
@@ -61,6 +63,14 @@ const CreateFruits = () => {
           onChange={(e) =>
             setFruitData({ ...fruitData, readyToEat: !fruitData.readyToEat })
           }
+        />
+        <br />
+        Age:
+        <input
+          type="number"
+          name="age"
+          value={fruitData.age}
+          onChange={(e) => setFruitData({ ...fruitData, age: +e.target.value })}
         />
         <br />
         <button>Create Fruit</button>
