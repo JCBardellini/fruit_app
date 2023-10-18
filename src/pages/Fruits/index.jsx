@@ -1,35 +1,35 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Fruits = () => {
-    const [fruits, setFruits] = useState([]);
+  const [fruits, setFruits] = useState([]);
 
-    useEffect( () => {
-        axios({
-            method: "GET",
-            url: "http://localhost:3000/fruits"
-        }).then((res) => {
-            console.log("response data", res.data);
-            setFruits(res.data)
-        })
-    }, [])
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "/server/fruits",
+    }).then((res) => {
+      console.log("response data", res.data);
+      setFruits(res.data);
+    });
+  }, []);
 
   return (
-    <div>Show all fruits here:
-        <ul>
+    <div>
+      Show all fruits here:
+      <ul>
         {fruits.map((fruit) => {
-            return (
-                <li key={fruit.name}>
-                    <p>{fruit.name}</p>
-                    <p>{fruit.color}</p>
-                    <p>{fruit.readyToEat}</p>
-                </li>
-            )
+          return (
+            <li key={fruit.name}>
+              <p>{fruit.name}</p>
+              <p>{fruit.color}</p>
+              <p>{fruit.readyToEat}</p>
+            </li>
+          );
         })}
-
-        </ul>
+      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Fruits
+export default Fruits;

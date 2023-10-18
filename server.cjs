@@ -31,20 +31,21 @@ app.use(middleware);
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   res.send("here is your valuable data");
 });
 
-app.get("/fruits", (req, res) => {
-  //   res.send(fruits);
+app.get("/fruits", async (req, res) => {
+    let fruitsFromDB = Fruit.find();
+    res.send(fruitsFromDB);
 });
 
-app.post("/fruits", (req, res) => {
+app.post("/fruits", async (req, res) => {
   //   console.log(req.body);
   let fruit = req.body;
-  Fruit.create(fruit);
-  fruits.push(req.body);
-  res.send("route is good");
+  let responseFromDB = await Fruit.create(fruit);
+  console.log(responseFromDB);
+  res.send("route is good")
 });
 
 app.listen(PORT, () => {
